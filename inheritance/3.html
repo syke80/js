@@ -1,0 +1,52 @@
+<script>
+function MyClass() {
+	this.aPublicVar = "asd";
+
+}
+MyClass.prototype.myPublicMethod1 = function() {
+	return "my public method1 @ MyClass";
+}
+
+MyClass.prototype.myPublicMethod2 = function() {
+	return "my public method2 @ MyClass";
+}
+
+
+function B() {
+	MyClass.call(this);
+	this.bPublicVar = "qwe";
+}
+
+B.prototype = Object.create(MyClass.prototype);
+// constructor should be fixed
+//B.prototype.constructor = B;
+
+function C() {
+	B.call(this);
+	this.cPublicVar = "zxc";
+}
+
+C.prototype = Object.create(B.prototype);
+
+
+
+
+
+
+
+
+
+console.log(MyClass);
+console.log(B);
+console.log(C);
+
+var cInstance = new C();
+
+console.log("aPublicVar", cInstance.aPublicVar);
+
+console.log("bPublicVar", cInstance.bPublicVar);
+
+console.log("cPublicVar", cInstance.cPublicVar);
+
+console.log("accessing grandparent", cInstance.myPublicMethod1());
+</script>

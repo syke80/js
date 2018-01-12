@@ -1,0 +1,31 @@
+<script>
+function MyClass() {
+	var myPrivateVar1 = 'a';
+	this.myPublicVar1 = 'b';
+	
+	function myPrivateFunc() {
+		console.log('myPrivateFunc', myPrivateVar1, this.myPublicVar1);
+	}
+
+	myPrivateFuncBinded = function() {
+		console.log('myPrivateFuncBinded', myPrivateVar1, this.myPublicVar1);
+	}.bind(this);
+
+	this.myPublicFunc = function myPublicFunc() {
+		console.log('myPublicFunc', myPrivateVar1, this.myPublicVar1);
+		myPrivateFunc();
+		myPrivateFuncBinded();
+	}
+}
+
+MyClass.prototype.myPrototypeFunc = function() {
+	var res1 = typeof myPrivateVar1 === 'undefined' ? "myPrivateVar1 does not exist" : myPrivateVar12,
+	    res2 = typeof this.myPublicVar1 === 'undefined' ? "myPublicVar1 does not exist" : this.myPublicVar1;
+	console.log('myPrototypeFunc', res1, res2);
+}
+
+var myInstance = new MyClass();
+
+myInstance.myPublicFunc();
+myInstance.myPrototypeFunc();
+</script>

@@ -1,0 +1,50 @@
+<style>
+	img { width: 20px; height: 20px; }
+	a { background: gray; padding: 5px; }
+</style>
+
+<ul id="ul-1">
+    <li id="li-1">
+		<span id="a-1" href="...">
+			<img id="img-1" src="./unnamed.png" alt="">
+		</span>
+    </li>
+    <li>
+		<a id="a-2" href="...">
+			<img src="./unnamed.png" alt="">
+		</a>
+    </li>
+    <li>
+		<a id="a-3" href="...">
+			<img src="./unnamed.png" alt="">
+		</a>
+    </li>
+</ul>
+
+<script>
+document.getElementById('ul-1').addEventListener('click', listener1, true);
+document.getElementById('ul-1').addEventListener('click', listener4, true);
+document.getElementById('a-1').addEventListener('click', listener2, true);
+document.getElementById('img-1').addEventListener('click', listener3, true);
+document.getElementById('a-1').addEventListener('click', listener5, true);
+document.getElementById('img-1').addEventListener('click', listener6, true);
+
+function listener1(event) {
+	console.log('listener1', event);
+}
+function listener2(event) {
+	console.log('listener2', event);
+}
+function listener3(event) {
+	console.log('listener3', event);
+}
+function listener4(event) {
+	console.log('listener4', event);
+}
+function listener5(event) {
+	console.log('listener5', event);
+}
+function listener6(event) {
+	console.log('listener6', event);
+}
+</script>

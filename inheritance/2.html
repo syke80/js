@@ -1,0 +1,34 @@
+<script>
+function MyClass() {
+	this.aPublicVar = "asd";
+
+}
+MyClass.prototype.myPublicMethod1 = function() {
+	return "my public method1 @ MyClass";
+}
+
+MyClass.prototype.myPublicMethod2 = function() {
+	return "my public method2 @ MyClass";
+}
+
+
+function B() {
+	MyClass.call(this);
+	this.bPublicVar = "qwe";
+}
+
+B.prototype = Object.create(MyClass.prototype);
+// constructor should be fixed
+//B.prototype.constructor = B;
+
+console.log(MyClass);
+console.log(B);
+
+var bInstance = new B();
+
+console.log("aPublicVar", bInstance.aPublicVar);
+
+console.log("bPublicVar", bInstance.bPublicVar);
+
+console.log("accessing parent", bInstance.myPublicMethod1());
+</script>

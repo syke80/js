@@ -1,0 +1,34 @@
+<script>
+function MyClass() {
+	this.aPublicVar = "asd";
+
+}
+
+MyClass.prototype.complexMethod1 = function() {
+	return "complex method @ MyClass " + this.primitiveMethod1() + this.primitiveMethod2();
+}
+
+MyClass.prototype.primitiveMethod1 = function() {
+	return "primitive method1 @ MyClass";
+}
+
+MyClass.prototype.primitiveMethod2 = function() {
+	return "primitive method2 @ MyClass";
+}
+
+function B() {
+	MyClass.call(this);
+	this.bPublicVar = "qwe";
+}
+
+B.prototype = Object.create(MyClass.prototype);
+// constructor should be fixed
+//B.prototype.constructor = B;
+B.prototype.primitiveMethod2 = function() {
+	return "primitive method2 @ B";
+}
+
+var bInstance = new B();
+
+console.log(bInstance.complexMethod1());
+</script>
