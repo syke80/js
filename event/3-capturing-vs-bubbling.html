@@ -12,11 +12,13 @@
 </ul>
 
 <script>
+<!-- BUBBLING EVENTS RUN AFTER CAPTURING EVENTS -->
 document.getElementById('ul-1').addEventListener('click', listener_ul_1, true);
-document.getElementById('ul-1').addEventListener('click', listener_ul_2, true);
+document.getElementById('ul-1').addEventListener('click', listener_ul_2, false);
 document.getElementById('a-1').addEventListener('click', listener_a_1, true);
-document.getElementById('img-1').addEventListener('click', listener_img_1, true);
 document.getElementById('a-1').addEventListener('click', listener_a_2, true);
+document.getElementById('img-1').addEventListener('click', listener_img_1, true);
+document.getElementById('a-1').addEventListener('click', listener_a_3, false);
 document.getElementById('img-1').addEventListener('click', listener_img_2, true);
 
 function listener_ul_1(event) {
@@ -26,10 +28,14 @@ function listener_ul_2(event) {
 	console.log('Listener: UL: second', event);
 }
 function listener_a_1(event) {
-	console.log('Listener: A: first', event);
+	event.stopPropagation();
+	console.log('Listener: A: first (attached as capturing)', event);
 }
 function listener_a_2(event) {
-	console.log('Listener: A: second', event);
+	console.log('Listener: A: second (attached as capturing)', event);
+}
+function listener_a_3(event) {
+	console.log('Listener: A: third (attached as bubbling)', event);
 }
 function listener_img_1(event) {
 	console.log('Listener: IMG: first', event);

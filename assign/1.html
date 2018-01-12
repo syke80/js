@@ -1,0 +1,22 @@
+<script>
+
+var obj1 = { a: 123, b: 234 }
+
+var obj2 = {};
+Object.assign(obj2, obj1);
+obj2.a = "obj2 updated value";
+
+var obj3 = Object.assign({}, obj1);
+obj3.a = "obj3 updated value";
+
+var obj4 = Object.assign({ a: "obj3 initial value", c: 345 }, obj1);
+
+var obj4 = function() { console.log('hello world') }
+
+console.log(obj1);
+console.log(obj2);
+console.log(obj3);
+console.log(obj4);
+
+
+</script>
