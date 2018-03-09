@@ -1,0 +1,12 @@
+<script>
+// bind is about currying
+
+function add(a,b) {
+	return a + " + " + b + " = " + (a+b);
+}
+
+increment = add.bind(undefined, 12);
+
+console.log(increment(4));
+
+</script>

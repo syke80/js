@@ -1,0 +1,13 @@
+<script>
+function saySomething(sayWhat) {
+	return function(sayTo) {
+		console.log(sayWhat + ' ' + sayTo);
+	}
+}
+
+var sayHello = saySomething('Hello');
+
+sayHello('Adam');
+sayHello('Bob');
+
+</script>

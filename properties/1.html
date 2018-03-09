@@ -1,0 +1,20 @@
+<script>
+var myObj = {
+	a: 1,
+	b: 2,
+	_c: 3,
+};
+
+Object.defineProperty(myObj, 'c', {
+	enumerable: true,
+	get: function() {
+		return myObj._c
+	},
+	set: function(value) {
+		myObj._c = value;
+	}
+});
+
+
+
+</script>

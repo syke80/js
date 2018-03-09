@@ -1,0 +1,22 @@
+<script>
+var MyClass = function() {
+	var
+	  _a = 1,
+	  _b = 2,
+      _c = 3;
+	
+	Object.defineProperty(this, 'c', {
+		enumerable: true,
+		get: function() {
+			return _c
+		},
+		set: function(value) {
+			_c = value;
+		}
+	});
+}
+
+var myObj = new MyClass();
+
+
+</script>

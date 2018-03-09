@@ -1,0 +1,16 @@
+<script>
+
+function myFunc() {
+	console.log('hello world @ myFunc');
+}
+
+function myWrapper() {
+	myFunc();
+	function myFunc() {
+		console.log('hello world @ my inner func');
+	}
+}
+
+myWrapper();
+
+</script>
