@@ -1,0 +1,39 @@
+<script>
+
+function getTimestamp() {
+  return Math.round(new Date().getTime());
+}
+
+function getFormattedTimestamp() {
+  return getTimestamp().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+var task4start,
+    task4finish;
+
+console.log('3 start', getFormattedTimestamp());
+setTimeout(function(){
+  var i;
+  for (i = 1; i<6000; i++) {
+    console.log('3 doing');
+  }
+  console.log('3 done', getFormattedTimestamp());
+}, 10);
+
+task4start = getTimestamp();
+console.log('4 start', getFormattedTimestamp());
+setTimeout(function(){
+  console.log('4 done', getFormattedTimestamp());
+  task4finish = getTimestamp();
+  console.log('4 finished in ' + (getTimestamp() - task4start) + ' seconds, because it was waiting for the freviously started setTimeout task. task4 takes 30ms if the other tasks are not slow.');
+}, 30);
+
+console.log('2 start', getFormattedTimestamp());
+setTimeout(function(){
+  console.log('2 done', getFormattedTimestamp());
+}, 0);
+
+
+console.log('1 done', getFormattedTimestamp());
+
+</script>

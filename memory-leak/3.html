@@ -1,0 +1,22 @@
+<button onclick="onButtonClick()" type="button">Leak</button>
+<script>
+var theThing = null;
+var replaceThing = function (originalThing) {
+  var unused = function () {
+    if (originalThing)
+      console.log("hi");
+  };
+  theThing = {
+    longStr: new Array(1000000).join('*'),
+    someMethod: function () {
+      console.log(someMessage);
+    }
+  };
+  return theThing;
+};
+
+function onButtonClick() {
+  theThing = replacething(theThing);
+}
+
+</script>
